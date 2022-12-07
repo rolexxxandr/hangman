@@ -101,9 +101,9 @@ def display_stickman(attemps):
     print(Style.RESET_ALL)
 
 # get word from console or from list
-def generate_word():
+def generate_word(again):
     word = sys.argv[1]
-    if word == None or word == "":
+    if word == None or word == "" or again:
         word_list = ["computer", "display", "monitor", "event", "keyboard", "system", "nitro"]
         word = word_list[randint(0, len(word_list)-1)]
         return word
@@ -120,3 +120,9 @@ def display_result(status, attemps, guessed_word):
     display_stickman(attemps)
     print(Fore.CYAN + guessed_word)
     print(f"{Fore.RED if status == 'lose' else Fore.GREEN}" + f"you {status}"  + Style.RESET_ALL)
+
+def play_again():
+    user_input = input("do you want play again?(y/n): ")
+    if user_input == "y" or user_input == "Y":
+        return 1
+    return 0
