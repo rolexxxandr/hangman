@@ -4,9 +4,7 @@ from colorama.ansi import Style
 from random import randint
 import os
 
-
-word_list = ["computer", "display", "monitor", "event", "keyboard", "system", "nitro"]
-guessed_word = word_list[randint(0, len(word_list)-1)]
+guessed_word = generate_word()
 letters = list(guessed_word)
 right_letters = []
 used_letters = []

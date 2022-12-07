@@ -2,6 +2,7 @@ from colorama import Fore
 from colorama.ansi import Style
 from random import randint
 import os
+import sys
 
 # if letter in a word - return index of this letter in list
 def check_letter(letter, word):
@@ -98,3 +99,12 @@ def display_stickman(attemps):
                   "  |    / \ \n"
                   "__|__\n")
     print(Style.RESET_ALL)
+
+def generate_word():
+    word = sys.argv[1]
+
+    if word == None or word == "":
+        word_list = ["computer", "display", "monitor", "event", "keyboard", "system", "nitro"]
+        word = word_list[randint(0, len(word_list)-1)]
+        return word
+    return word
