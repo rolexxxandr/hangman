@@ -1,0 +1,2 @@
+add input from console
+add mode
