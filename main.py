@@ -1,7 +1,4 @@
 from functions import *
-from colorama import Fore
-from colorama.ansi import Style
-from random import randint
 import os
 
 guessed_word = generate_word()
@@ -24,7 +21,6 @@ while attemps > 0:
     if index == -1:
         if user_input in right_letters:
             continue
-
         attemps -= 1
         used_letters.append(user_input)
     else:
@@ -35,14 +31,8 @@ while attemps > 0:
         used_letters.append(user_input)
 
     if answer == guessed_word or user_input == guessed_word:
-        os.system("cls" if os.name == "nt" else "clear") # clear console
-        display_stickman(attemps)
-        print(Fore.CYAN + guessed_word)
-        print(Fore.GREEN + "you win"   + Style.RESET_ALL)
+        display_result("win", attemps, guessed_word)
         break
 
 if attemps == 0:
-    os.system("cls" if os.name == "nt" else "clear") # clear console
-    display_stickman(attemps)
-    print(Fore.CYAN + guessed_word)
-    print(Fore.RED + "you lose"  + Style.RESET_ALL)
+    display_result("lose", attemps, guessed_word)

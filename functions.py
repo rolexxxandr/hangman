@@ -1,8 +1,8 @@
 from colorama import Fore
 from colorama.ansi import Style
 from random import randint
-import os
 import sys
+import os
 
 # if letter in a word - return index of this letter in list
 def check_letter(letter, word):
@@ -100,11 +100,17 @@ def display_stickman(attemps):
                   "__|__\n")
     print(Style.RESET_ALL)
 
+# get word from console or from list
 def generate_word():
     word = sys.argv[1]
-
     if word == None or word == "":
         word_list = ["computer", "display", "monitor", "event", "keyboard", "system", "nitro"]
         word = word_list[randint(0, len(word_list)-1)]
         return word
     return word
+
+def display_result(status, attemps, guessed_word):
+    os.system("cls" if os.name == "nt" else "clear") # clear console
+    display_stickman(attemps)
+    print(Fore.CYAN + guessed_word)
+    print(f"{Fore.RED if status == 'lose' else Fore.GREEN}" + f"you {status}"  + Style.RESET_ALL)
