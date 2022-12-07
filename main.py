@@ -1,5 +1,4 @@
 from functions import *
-import os
 
 guessed_word = generate_word()
 letters = list(guessed_word)
@@ -11,10 +10,7 @@ answer = update_answer(chars)
 
 attemps = 7
 while attemps > 0:
-    os.system("cls" if os.name == "nt" else "clear") # clear console
-    display_stickman(attemps)
-    print(f"Word({len(letters)}): {answer} | attemps: {attemps}")
-    print(set_used_letters(used_letters))
+    display_status(attemps, letters, answer, used_letters)
     user_input = input("input your letter -> ")
     index = check_letter(user_input, letters)
 
@@ -36,3 +32,4 @@ while attemps > 0:
 
 if attemps == 0:
     display_result("lose", attemps, guessed_word)
+input()

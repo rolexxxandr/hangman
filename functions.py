@@ -109,6 +109,12 @@ def generate_word():
         return word
     return word
 
+def display_status(attemps, letters, answer, used_letters):
+    os.system("cls" if os.name == "nt" else "clear") # clear console
+    display_stickman(attemps)
+    print(f"Word({len(letters)}): {answer} | attemps: {attemps}")
+    print(set_used_letters(used_letters))
+
 def display_result(status, attemps, guessed_word):
     os.system("cls" if os.name == "nt" else "clear") # clear console
     display_stickman(attemps)
