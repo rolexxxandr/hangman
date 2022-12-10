@@ -5,8 +5,8 @@ What is this
 
 Hangman is a guessing game for two or more players. One player thinks of a word, phrase or sentence and the other(s) tries to guess it by suggesting letters within a certain number of guesses. Originally a Paper-and-pencil game, there are electronic versions.
 
-Setting up pygame
-------------------
+Setting up colorama
+-------------------
 
 For using this code you need to install ``colorama``.
 
@@ -23,7 +23,7 @@ Or you can input your word:
 
     $ python main.py word
 
-Version of Pygame, Python
+Version of Colorama, Python
 -------------------------
 
 Last tested with Python 3.10.7, Colorama 0.4.6.
