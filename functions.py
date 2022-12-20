@@ -37,7 +37,7 @@ def display_stickman(attempts):
                   "  |      \n"
                   "  |      \n"
                   "  |      \n"
-                  "__|__\n")
+                  "__|__")
     elif attempts == 5:
         print(Fore.GREEN + 
                 "   _____ \n"
@@ -47,7 +47,7 @@ def display_stickman(attempts):
                 "  |      \n"
                 "  |      \n"
                 "  |      \n"
-                "__|__\n")
+                "__|__")
     elif attempts == 4:
         print(Fore.GREEN + 
                  "   _____ \n"
@@ -57,7 +57,7 @@ def display_stickman(attempts):
                  "  |      \n"
                  "  |      \n"
                  "  |      \n"
-                 "__|__\n")
+                 "__|__")
     elif attempts == 3:
         print(Fore.YELLOW + 
                   "   _____ \n"
@@ -67,7 +67,7 @@ def display_stickman(attempts):
                   "  |     O \n"
                   "  |      \n"
                   "  |      \n"
-                  "__|__\n")
+                  "__|__")
     elif attempts == 2:
          print(Fore.YELLOW + 
                   "   _____ \n"
@@ -77,7 +77,7 @@ def display_stickman(attempts):
                   "  |     O \n"
                   "  |    / \ \n"
                   "  |        \n"
-                  "__|__\n")
+                  "__|__")
     elif attempts == 1:
          print(Fore.RED + 
                   "   _____ \n"
@@ -87,7 +87,7 @@ def display_stickman(attempts):
                   "  |     O \n"
                   "  |    / \ \n"
                   "  |    / \ \n"
-                  "__|__\n")
+                  "__|__")
     elif attempts == 0:
         print(Fore.MAGENTA + 
                   "   _____ \n"
@@ -97,8 +97,32 @@ def display_stickman(attempts):
                   "  |     O \n"
                   "  |    /|\ \n"
                   "  |    / \ \n"
-                  "__|__\n")
+                  "__|__")
     print(Style.RESET_ALL)
+
+def display_letters(used_letters):
+    letters_status = {
+        "a" : 0, "b" : 0, "c" : 0, "d" : 0, "e" : 0, "f" : 0, "g" : 0, "h" : 0, "i" : 0, "j" : 0, "k" : 0, "l" : 0, "m" : 0, 
+        "n" : 0, "o" : 0, "p" : 0, "q" : 0, "r" : 0, "s" : 0, "t" : 0, "u" : 0, "v" : 0, "w" : 0, "x" : 0, "y" : 0, "z" : 0
+        }
+
+    alphabet = list(letters_status.keys())
+    
+    for i in letters_status:
+        if i in used_letters:
+            letters_status[i] = 1
+
+    for j in range(len(alphabet)):
+        if j % 7 == 0:
+            print("\n")
+        if letters_status[alphabet[j]] == 1:
+            print(Fore.YELLOW + alphabet[j] + Style.RESET_ALL, end=" ")
+        else:
+            print(alphabet[j], end=" ")
+
+    print("\n")
+
+        
 
 # get word from console or from list
 def generate_word(again):
@@ -114,13 +138,14 @@ def generate_word(again):
 def display_status(attempts, letters, answer, used_letters):
     os.system("cls" if os.name == "nt" else "clear") # clear console
     display_stickman(attempts)
+    display_letters(used_letters)
     print(f"Word({len(letters)}): {answer} | attempts: {attempts}")
-    print(set_used_letters(used_letters))
 
-def display_result(status, attempts, guessed_word):
+def display_result(status, attempts, guessed_word, used_letters):
     os.system("cls" if os.name == "nt" else "clear") # clear console
     display_stickman(attempts)
-    print(Fore.CYAN + guessed_word)
+    display_letters(used_letters)
+    print("Word: " + Fore.CYAN + guessed_word)
     print(f"{Fore.RED if status == 'lose' else Fore.GREEN}" + f"you {status}"  + Style.RESET_ALL)
 
 def play_again():
